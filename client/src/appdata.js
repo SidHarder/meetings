@@ -16,7 +16,7 @@ export class appData {
         http.configure(config => {
             config
                 .useStandardConfiguration()
-                .withBaseUrl('http://127.0.0.1:3000/');
+                .withBaseUrl('http://162.243.144.71:3000/');
         });
         
         this.http = http;
