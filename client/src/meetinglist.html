@@ -1,0 +1,25 @@
+<template>
+    <div class="container">
+        <div class="header clearfix">
+            <nav>
+              <ul class="nav nav-pills pull-right">
+                <li role="presentation" class="active"><a href="#">Home</a></li>
+                <li role="presentation" class="active"><a href="javascript:void(0);" click.delegate="insert()">Insert</a></li>
+              </ul>
+            </nav>
+            <h3 class="text-muted">Meeting List</h3>
+        </div>
+        <div class="row">
+            <div>
+                <div class="post-preview" repeat.for="item of appData.meetingList">
+                    <a route-href="route: meeting; params.bind: { _id : item._id }">
+                        <h3>${item.name}</h3>
+                        <h4>Scheduled Start: ${item.scheduledStartDate}</h4>
+                    </a>
+                    <p>Chaired By: ${item.chair} <a route-href="route: meetingsetup; params.bind: { _id:item._id }">setup</a></p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>    
+</template>

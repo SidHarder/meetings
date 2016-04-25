@@ -1,0 +1,45 @@
+<template>
+    <div class="container">
+        <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a route-href="route: meetinglist;">Back</a></li>
+            <li role="presentation"><a href="javascript:void(0);" click.delegate="delete()">Delete</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Motion Setup</h3>
+      </div>
+        <hr>
+        <form submit.delegate="submit()">
+            <div class="row">
+                <label class="col-sm-4" style="min-width: 100px">Text:</label>
+                <textarea class="col-sm-4" value.bind="motion.text" rows="10" cols="200"></textarea>
+            </div>
+            <div class="row">
+                <label class="col-sm-4" style="min-width: 100px">Member:</label>
+                <select value.bind="motion.memberId" style="min-width: 100px">
+                    <option>Select Member</option>
+                    <option repeat.for="member of appData.memberList" model.bind="member._id">${member.emailAddress}</option>
+                </select>
+            </div>
+            <div class="row">
+                <label class="col-sm-4" style="min-width: 100px">Team:</label>
+                <select value.bind="motion.teamId" style="min-width: 100px">
+                    <option>Select Team</option>
+                    <option repeat.for="team of appData.teamList" model.bind="team._id">${team.name}</option>
+                </select>
+            </div>
+            <div class="row">
+                <label class="col-sm-4" style="min-width: 100px">Meeting:</label>
+                <select value.bind="motion.meetingId" style="min-width: 100px">
+                    <option>Select Meeting</option>
+                    <option repeat.for="meeting of appData.meetingList" model.bind="meeting._id">${meeting.name}</option>
+                </select>
+            </div>
+            
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>    
+</template>

@@ -1,0 +1,42 @@
+<template>
+    <div class="container">
+        <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a route-href="route: meetinglist;">Back</a></li>
+            <li role="presentation"><a href="javascript:void(0);" click.delegate="delete()">Delete</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Meeting Setup</h3>
+      </div>
+        <hr>
+        <form submit.delegate="submit()">
+            <div class="row">
+                <label  class="col-sm-4" style="min-width: 100px">Name:</label>
+                <input class="col-sm-4" type="text" value.bind="meeting.name" style="min-width: 250px">
+            </div>
+            <div class="row">
+                <label class="col-sm-4" style="min-width: 100px">Scheduled Start Date:</label>
+                <input class="col-sm-4" type="text" value.bind="meeting.scheduledStartDate" style="min-width: 250px">
+            </div>
+            <div class="row">
+                <label class="col-sm-4" style="min-width: 100px">Scheduled End Date:</label>
+                <input class="col-sm-4" type="text" value.bind="meeting.scheduledEndDate" style="min-width: 250px">
+            </div>
+            <div class="row">
+                <label class="col-sm-4" style="min-width: 100px">Chair:</label>
+                <input class="col-sm-4" type="text" value.bind="meeting.chair" style="min-width: 250px">
+            </div>
+            <div class="row">
+                <label class="col-sm-4" style="min-width: 100px">Team:</label>
+                <select value.bind="meeting.teamId" style="min-width: 250px">
+                    <option>Select Team</option>
+                    <option repeat.for="team of appData.teamList" model.bind="team._id" >${team.name}</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>    
+</template>

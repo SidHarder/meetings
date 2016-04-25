@@ -1,0 +1,23 @@
+<template>
+    <div class="container">
+        <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a route-href="route: memberlist;">Back</a></li>
+            <li role="presentation"><a href="javascript:void(0);" click.delegate="delete()">Delete</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Member Setup</h3>
+      </div>
+        <hr>
+        <form submit.delegate="submit()">
+            <div class="row">
+                <label  class="col-sm-4" style="min-width: 100px">Email Address:</label>
+                <input class="col-sm-4" type="text" value.bind="member.emailAddress" style="min-width: 250px">
+            </div>
+            <div>
+                <button type="submit">Save</button>
+            </div>
+        </form>
+    </div>    
+</template>
