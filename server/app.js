@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
 var expressJWT = require('express-jwt');
+var request = require('request');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -41,6 +42,22 @@ app.post('/login', function(req, res) {
             }
         });   
     }
+});
+
+app.post('/slackoutgoingwebhook', function(req, res) {
+    res.status(200).send({ "text" : "This is awesome." });
+});
+
+app.post('/slackintegration', function(req, res) {
+    request({
+        url: "https://hooks.slack.com/services/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",
+        method: "POST",
+        json: true,
+        body: req.body
+    }, function (error, response, body){
+        console.log(response);
+    });
+    res.status(200).send({ status: 200, data: null });
 });
 
 app.get('/list/:collectionName', function (req, res) {
@@ -171,7 +188,6 @@ app.post('/save/:collectionName/:_id', function(req, res) {
         }
     });
 });
-
 
 app.listen(3000, function () {
   console.log('app listening on port 3000!');

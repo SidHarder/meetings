@@ -2,6 +2,7 @@ import {inject} from 'aurelia-framework';
 import {appData} from './appdata';
 import {Router} from 'aurelia-router'
 
+import 'fetch';
 
 @inject(Router, appData)
 export class meeting {
@@ -33,5 +34,9 @@ export class meeting {
     
     addMotion() {
         
+    }
+    
+    postToSlack() {
+        this.appData.postToSlack();
     }
 }

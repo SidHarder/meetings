@@ -3,7 +3,6 @@ import {HttpClient} from 'aurelia-fetch-client';
 import {json} from 'aurelia-fetch-client';
 import {bsonObjectId} from './bsonobjectid';
 
-
 import 'fetch';
 
 @inject(HttpClient, bsonObjectId)
@@ -16,7 +15,7 @@ export class appData {
         http.configure(config => {
             config
                 .useStandardConfiguration()
-                .withBaseUrl('http://162.243.144.71:3000/');
+                .withBaseUrl('http://localhost:3000/');
         });
         
         this.http = http;
@@ -39,6 +38,21 @@ export class appData {
         this.http.fetch('list/motion')
                 .then(response => response.json())
                 .then(list => this.motionList = list)
+    }
+    
+    postToSlack() {
+        
+        var doc = {
+            "channel": "#general", 
+            "username": "sid.harder", 
+            "text": "This is posted from MajorityRule.it, good day.", 
+            "icon_emoji": ":ghost:"
+        }
+        
+        this.http.fetch('slackintegration/', {
+            method: 'post',
+            body: json(doc)
+        });
     }
     
     deleteMember = (document, collectionName, _id) => {
@@ -105,8 +119,6 @@ export class appData {
         this.teamList.push(team);
         this.insertDocument('team', team);
     }
-    
-    insertMotion
     
     insertMotion = () => {
         var motion = {
