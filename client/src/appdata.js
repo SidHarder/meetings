@@ -15,7 +15,7 @@ export class appData {
         http.configure(config => {
             config
                 .useStandardConfiguration()
-                .withBaseUrl('http://localhost:3000/');
+                .withBaseUrl('http://www.majorityrules.it:3000/');
         });
         
         this.http = http;
